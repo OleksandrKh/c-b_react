@@ -1,0 +1,72 @@
+{
+  "header": {
+    "headerHelpersMenu": ["Delivery", "FAQ", "Help"],
+    "headerDropdownCurrency": ["dollars", "grivnas"],
+    "headerDropdownLanguage": ["En", "Ua", "Ru"]
+  },
+  "logo": "../app/images/logo.png",
+  "menu": ["home", "catalog", "news", "sale", "about", "contacts"],
+  "catalog": {
+    "menu": ["all", "t-shirts", "sweaters", "shorts", "jackets", "accessoires"],
+    "goods": [
+      {
+        "id": 1,
+        "description": "Printed swimsuit copy",
+        "price": 23,
+        "img": "../app/images/shorts_01.jpg",
+        "category": "shorts"
+      },
+      {
+        "id": 2,
+        "description": "Jogging bermuda shorts copy",
+        "price": 36,
+        "img": "../app/images/shorts_02.jpg",
+        "category": "shorts",
+        "sale": 12
+      },
+      {
+        "id": 3,
+        "description": "Basic beach flip flops copy",
+        "price": 9,
+        "img": "../app/images/flip-flops_01.jpg",
+        "new": true
+      },
+      {
+        "id": 4,
+        "description": "Black sunglasses copy",
+        "price": 29,
+        "img": "../app/images/accessoires_01.jpg",
+        "category": "accessoires"
+      },
+      {
+        "id": 5,
+        "description": "Long sleeved twill shirt",
+        "price": 20,
+        "img": "../app/images/shirt_01.jpg",
+        "category": "t-shirts"
+      },
+      {
+        "id": 6,
+        "description": "Basic swimsuit",
+        "price": 36,
+        "img": "../app/images/shorts_03.jpg",
+        "category": "shorts"
+      },
+      {
+        "id": 7,
+        "description": "Basic swimsuit",
+        "price": 12,
+        "img": "../app/images/shorts_04.jpg",
+        "category": "shorts"
+      },
+      {
+        "id": 8,
+        "description": "T-shirt with lower panel",
+        "price": 23,
+        "img": "../app/images/t-shirt_01.jpg",
+        "category": "t-shirts",
+        "sale": 12
+      }
+    ]
+  }
+}
