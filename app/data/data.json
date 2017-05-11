@@ -29,7 +29,8 @@
         "description": "Basic beach flip flops copy",
         "price": 9,
         "img": "../app/images/flip-flops_01.jpg",
-        "new": true
+        "new": true,
+        "category": "accessoires"
       },
       {
         "id": 4,

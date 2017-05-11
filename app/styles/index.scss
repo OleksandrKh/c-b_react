@@ -5,6 +5,16 @@ body {
   background-color: #fff;
 }
 
+h1 {
+  font-size: 38px;
+  text-align: center;
+  width: 100%;
+}
+
+.catalog-list figure {
+  cursor: pointer;
+}
+
 .nav-helpers-item,
 .nav-currency-wrapper,
 .nav-language-wrapper {
@@ -95,7 +105,6 @@ header {
   }
 
   .shoppingCart-wrapper {
-    border: 3px solid #f00;
     display: -webkit-flex;
     display: -ms-flex;
     display: flex;
@@ -112,6 +121,7 @@ header {
       align-items: center;
       justify-content: center;
       color: #000;
+      cursor: pointer;
       border: 2px solid #1274d3;
       border-radius: 50%;
       font-size: 14px;
@@ -155,6 +165,7 @@ header {
   li {
     border-bottom: 2px solid transparent;
     color: rgba(51, 51, 51, 0.58);
+    cursor: pointer;
     display: inline-block;
     margin: 0px 25px;
     text-align: center;
@@ -226,6 +237,11 @@ header {
   .subscribe-massage {
     color: #fff;
     font-size: 38px;
+    margin-top: 20px;
+    text-transform: lowercase;
+    &:first-letter {
+      text-transform: uppercase;
+    }
   }
   .subscription {
     display: -webkit-flex;

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-function NewsSubscription({ store }) {
+const NewsSubscription = ({ store, onHandleUserEmail, sendEmail }) => {
+  // console.log(onHandleUserEmail);
+  let currentEmail = ''
   return (
     <div className='newslatters'>
       <div className='container'>
@@ -13,8 +15,11 @@ function NewsSubscription({ store }) {
               <input
                 type='text'
                 placeholder='Your Email Address'
+                onChange={onHandleUserEmail}
               />
-              <button></button>
+              <button
+                onClick={sendEmail}
+              ></button>
             </div>
           </div>
         </div>
@@ -25,7 +30,17 @@ function NewsSubscription({ store }) {
 
 export default connect(
   state => ({
-    store: 'hello'
+    store: state.newsletter
   }),
-  dispatch => ({})
+  dispatch => ({
+    onHandleUserEmail: (e) => {
+      let email = e.target.value
+      console.log(e);
+      if (email === '') { return }
+      dispatch({ type: 'GET_USER_EMAIL', email })
+    },
+    emailBtn: (arr) => {
+      console.log(getStore());
+    }
+  })
 )(NewsSubscription)

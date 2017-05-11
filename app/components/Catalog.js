@@ -19,8 +19,18 @@ const Categories = ({ menu, currentCategory, onClickCategory }) => {
   )
 }
 
-const CatalogList = ({ list }) => {
-  console.log(list);
+const createProductsList = (list, currentCategory) => {
+  if (currentCategory === 'all') {
+    return list ;
+  } else {
+    return list.filter((item) => {
+      return item.category === currentCategory
+    })
+  }
+}
+
+const CatalogList = ({ list, currentCategory }) => {
+  list = createProductsList(list, currentCategory);
   return (
     <div className='catalog-list'>
       {list.map((product) => {
@@ -61,7 +71,10 @@ const Catalog = ({ menu, currentCategory, onClickCategory, list }) => {
             onClickCategory={onClickCategory}
             menu={menu} />
         </div>
-        <CatalogList list={list} />
+        <CatalogList
+          list={list}
+          currentCategory={currentCategory}
+        />
       </div>
     </div>
   )
@@ -70,7 +83,13 @@ const Catalog = ({ menu, currentCategory, onClickCategory, list }) => {
 export default connect(
   state => ({
     menu: state.initialSiteData.catalog.menu,
-    list: state.initialSiteData.catalog.goods,
+    list: state.initialSiteData.catalog.goods.filter(product => {
+      if (state.search === '') {
+        return product
+      } else {
+        return product.description.includes(state.search)
+      }
+    }),
     currentCategory: state.catalogCategory
   }),
   dispatch => ({
