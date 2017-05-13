@@ -13,38 +13,25 @@ h1 {
 
 .catalog-list figure {
   cursor: pointer;
-}
-
-.nav-helpers-item,
-.nav-currency-wrapper,
-.nav-language-wrapper {
-  color: $base-text-color;
-  display: inline-block;
-  padding: 20px 17px 15px;
-  text-transform: uppercase;
-  &:first-child {
-    padding-left: 0;
-  }
-  &:last-child {
-    padding-right: 0;
-  }
-}
-.nav-currency-wrapper,
-.nav-language-wrapper {
-  & option {
+  position: relative;
+  text-align: center;
+  .new {
+    background-color: #1274d3;
+    border-radius: 15px;
+    color: #fff;
+    position: absolute;
     text-transform: uppercase;
+    top: 15px;
+    left: 20%;
+    padding: 2px 10px;
   }
 }
-.nav-currency-wrapper {
-  border-right: 1px solid rgba(0,0,0,.1);
-}
 
-.main-nav-borders {
-  border-top: 1px solid rgba(0,0,0,.1);
-  border-bottom: 1px solid rgba(0,0,0,.1);
-}
-
-header {
+header,
+footer {
+  .helpingNav-right {
+    text-align: right;
+  }
   select {
     border: none;
     background-image: url(../images/select-arrow-down.png);
@@ -62,19 +49,44 @@ header {
       display: none;
     }
   }
+  .nav-helpers-item,
+  .nav-currency-wrapper,
+  .nav-language-wrapper {
+    color: $base-text-color;
+    display: inline-block;
+    padding: 20px 17px 15px;
+    text-transform: uppercase;
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+  .nav-currency-wrapper,
+  .nav-language-wrapper {
+    & option {
+      text-transform: uppercase;
+    }
+  }
+  .nav-currency-wrapper {
+    border-right: 1px solid rgba(0,0,0,.1);
+  }
+  .main-nav-borders {
+    border-top: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+  }
 
   .navigation-border {
     border-bottom: 1px solid rgba(0,0,0,.1);
     border-top: 1px solid rgba(0,0,0,.1);
   }
-
   .currencyDropdown {
     width: 70px;
   }
   .languageDropdown {
     width: 32px;
   }
-
   .navigation {
     display: -webkit-flex;
     display: -ms-flex;
@@ -83,7 +95,6 @@ header {
     align-items: center;
     justify-content: space-between;
   }
-
   .main-nav {
     padding: 30px 0;
     a {
@@ -152,6 +163,26 @@ header {
   }
 }
 
+footer {
+  .row {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    div:nth-child(1) {
+      text-align: left;
+    }
+    div:nth-child(2) {
+      text-align: center;
+    }
+    div:nth-child(3) {
+      text-align: right;
+    }
+  }
+}
+
 .catalog-nav {
   font-size: 12px;
   ul, li {
@@ -159,6 +190,7 @@ header {
     display: inline-block;
   }
   ul {
+    padding: 0;
     text-align: center;
     width: 100%;
   }
@@ -214,12 +246,22 @@ header {
   }
 }
 
-.load-more-btn {
-  color: rgba(0,0,0,.2);
+.noMoreProducts {
+  color: #fc411d;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
+  width: 100%;
+}
+
+.load-more-btn {
+  color: rgba(0,0,0,.2);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 16px auto;
   text-transform: uppercase;
+  width: 115px;
 }
 
 .newslatters {
@@ -291,6 +333,69 @@ header {
         top: 50%;
         margin-top: -5px;
         width: 6px;
+      }
+    }
+  }
+}
+
+
+
+@media all and (max-width: 1050px) {
+  header {
+    .navigation {
+      flex-direction: column;
+      padding: 30px 0;
+    }
+    .main-nav {
+      padding: 10px 0;
+    }
+  }
+  footer {
+    .row {
+      flex-direction: column;
+      div.col-xs-12 {
+        text-align: center;
+      }
+      div.logo {
+        margin-top: 30px;
+        text-align: center;
+      }
+      .main-nav {
+        padding: 10px 0;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 800px) {
+  header {
+    .nav-helpers-header-wrapper {
+      text-align: center;
+    }
+    .helpingNav-right {
+      text-align: center;
+    }
+    .nav-currency-wrapper,
+    .nav-currency-wrapper,
+    .nav-helpers-item {
+      padding: 5px;
+    }
+    .nav-currency-wrapper {
+      border: none;
+    }
+  }
+}
+
+@media all and (max-width: 480px) {
+  header,
+  footer {
+    .main-nav {
+      padding: 20px 0;
+      width: 100%;
+      a {
+        display: block;
+        margin: 10px auto;
+        text-align: center;
       }
     }
   }

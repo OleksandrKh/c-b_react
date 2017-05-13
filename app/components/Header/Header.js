@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
+import PropTypes from 'prop-types'
 
 import HelpingHeaderNav from './HelpingHeaderNav'
 import Nav from './Nav'
@@ -37,9 +38,21 @@ function Header({ logo }) {
   )
 }
 
-export default connect(
-  state => ({
+Header.PropTypes = {
+  logo: PropTypes.string.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return {
     logo: state.initialSiteData.logo
-  }),
-  dispatch => ({})
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {}
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(Header)

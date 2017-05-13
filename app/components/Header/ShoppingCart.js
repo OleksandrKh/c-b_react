@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 function showHideSearchBox(e){
   let target = e.target
@@ -18,13 +19,10 @@ function showHideSearchBox(e){
   }
 }
 
-function ShoppingCart({ search, shoppingCartNum, handleSearchChange, handleIncreaseCart,
-  handleDecreaseCart }) {
+function ShoppingCart({ search, shoppingCartNum, handleSearchChange, handleDecreaseCart }) {
   return (
     <div className='shoppingCart-wrapper'>
-      <span
-        onClick={handleIncreaseCart}
-      >your bag</span>
+      <span>your bag</span>
       <span
         className='shoppingCart'
         onClick={handleDecreaseCart}
@@ -41,21 +39,33 @@ function ShoppingCart({ search, shoppingCartNum, handleSearchChange, handleIncre
   )
 }
 
-export default connect(
-  state => ({
+ShoppingCart.PropTypes = {
+  search: PropTypes.string.isRequired,
+  shoppingCartNum: PropTypes.number.isRequired,
+  handleSearchChange: PropTypes.func.isRequired,
+  handleDecreaseCart: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return {
     search: state.search,
     shoppingCartNum: state.shoppingCart
-  }),
-  dispatch => ({
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
     handleSearchChange: (input) => {
-      let search = input.target.value
+      let search = input.target.value.toLowerCase();
       dispatch({ type: 'SEARCH_DATA', search })
-    },
-    handleIncreaseCart: () => {
-      dispatch({ type: 'INCREASE_SHOPPING_CART' })
     },
     handleDecreaseCart: () => {
       dispatch({ type: 'DECREASE_SHOPPING_CART' })
     }
-  })
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(ShoppingCart)

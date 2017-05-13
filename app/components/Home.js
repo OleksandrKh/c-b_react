@@ -7,6 +7,7 @@ function Home({}) {
       <div className='row'>
         <div className='col-md-12'>
           <h1>Home</h1>
+          <p>Navigate to the Catalog!</p>
         </div>
       </div>
     </div>

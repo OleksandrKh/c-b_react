@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 const NavHelpersList = ({ headerHelpersMenu }) => {
   return (
@@ -20,7 +20,6 @@ const NavHelpersList = ({ headerHelpersMenu }) => {
 NavHelpersList.PropTypes = {
   headerHelpersMenu: PropTypes.array.isRequired
 }
-
 
 const NavCurrency = ({ headerDropdownCurrency, onCurrencyDropdownChange }) => {
   return (
@@ -77,11 +76,11 @@ const HelpingHeaderNav = ({ store, headerHelpersMenu, headerDropdownCurrency,
   headerDropdownLanguage, onCurrencyDropdownChange, onLanguageDropdownChange }) => {
   return (
     <div className='nav-helpers-header-wrapper'>
-      <div className='col-md-3'>
+      <div className='col-xs-12 col-sm-6 col-md-3'>
         <NavHelpersList
           headerHelpersMenu = {headerHelpersMenu}/>
       </div>
-      <div className='col-md-3 col-md-offset-6'>
+      <div className='helpingNav-right col-xs-12 col-sm-6 col-md-3 col-md-offset-6'>
         <NavCurrency
           headerDropdownCurrency={headerDropdownCurrency}
           onCurrencyDropdownChange={onCurrencyDropdownChange}/>
@@ -93,14 +92,17 @@ const HelpingHeaderNav = ({ store, headerHelpersMenu, headerDropdownCurrency,
   )
 }
 
-export default connect(
-  state => ({
+const mapStateToProps = (state, ownProps) => {
+  return {
     store: state,
     headerHelpersMenu: state.initialSiteData.header.headerHelpersMenu,
     headerDropdownCurrency: state.initialSiteData.header.headerDropdownCurrency,
     headerDropdownLanguage: state.initialSiteData.header.headerDropdownLanguage
-  }),
-  dispatch => ({
+  }
+}
+
+const mapDispatchToProps  = (dispatch) => {
+  return {
     onCurrencyDropdownChange: (curr) => {
       console.log(curr.target.value);
       dispatch({
@@ -115,5 +117,10 @@ export default connect(
         languageDropdown: lan.target.value
       })
     }
-  })
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(HelpingHeaderNav)

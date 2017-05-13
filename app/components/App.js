@@ -10,7 +10,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <div className="container">
+        <div>
           {this.props.children}
         </div>
         <NewsSubscription />

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
+import PropTypes from 'prop-types'
 
 function Nav({ menu }) {
   return (
@@ -17,9 +18,21 @@ function Nav({ menu }) {
   )
 }
 
-export default connect(
-  state => ({
+Nav.PropTypes = {
+  menu: PropTypes.array.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return {
     menu: state.initialSiteData.menu
-  }),
-  dispatch => ({})
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {}
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(Nav)

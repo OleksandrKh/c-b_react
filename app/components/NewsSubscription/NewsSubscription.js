@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
-const NewsSubscription = ({ store, onHandleUserEmail, sendEmail }) => {
-  // console.log(onHandleUserEmail);
+const handleUserEmail = (sendEmail) => {
+  let input = document.getElementById('newslettersEmail');
+  let inputVal = input.value;
+  if (inputVal === '') { return }
+  sendEmail(inputVal)
+  input.value = '';
+}
+
+const NewsSubscription = ({ sendEmail }) => {
   let currentEmail = ''
   return (
     <div className='newslatters'>
@@ -15,10 +23,10 @@ const NewsSubscription = ({ store, onHandleUserEmail, sendEmail }) => {
               <input
                 type='text'
                 placeholder='Your Email Address'
-                onChange={onHandleUserEmail}
+                id='newslettersEmail'
               />
               <button
-                onClick={sendEmail}
+                onClick={handleUserEmail.bind(null, sendEmail)}
               ></button>
             </div>
           </div>
@@ -28,19 +36,28 @@ const NewsSubscription = ({ store, onHandleUserEmail, sendEmail }) => {
   )
 }
 
-export default connect(
-  state => ({
+NewsSubscription.PropTypes = {
+  sendEmail: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return {
     store: state.newsletter
-  }),
-  dispatch => ({
-    onHandleUserEmail: (e) => {
-      let email = e.target.value
-      console.log(e);
-      if (email === '') { return }
-      dispatch({ type: 'GET_USER_EMAIL', email })
-    },
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
     emailBtn: (arr) => {
       console.log(getStore());
+    },
+    sendEmail: (email) => {
+      dispatch({ type: 'SEND_USER_EMAIL', email })
     }
-  })
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(NewsSubscription)
